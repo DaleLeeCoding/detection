@@ -56,7 +56,7 @@ train_pipeline = [
                       dict(
                           type='RandomCrop',
                           crop_type='absolute_range',
-                          crop_size=(384, 600),
+                          crop_size=(256, 256),
                           allow_negative_crop=True),
                       dict(
                           type='Resize',
@@ -74,7 +74,7 @@ train_pipeline = [
     dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels']),
 ]
 data = dict(train=dict(pipeline=train_pipeline))
-optimizer = dict(type='SGD', lr=0.002, momentum=0.9, weight_decay=0.0001)
+optimizer = dict(type='SGD', lr=0.02, momentum=0.9, weight_decay=0.0001)
 optimizer_config = dict(_delete_=True,grad_clip=dict(max_norm=35, norm_type=2))
 # learning policy
 lr_config = dict(
@@ -82,5 +82,5 @@ lr_config = dict(
     warmup='linear',
     warmup_iters=1000,
     warmup_ratio=0.001,
-    step=[10, 20])
+    step=[7,14,21])
 runner = dict(type='EpochBasedRunner',max_epochs=24)
