@@ -5,7 +5,7 @@ _base_ = [
     '/content/mmdetection/configs/_base_/default_runtime.py'
 ]
 
-pretrained = 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_small_patch4_window7_224.pth'  # noqa
+pretrained = 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_large_patch4_window12_384_22k.pth'  # noqa
 
 model = dict(
     backbone=dict(
