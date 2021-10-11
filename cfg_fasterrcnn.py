@@ -11,10 +11,10 @@ model = dict(
     backbone=dict(
         _delete_=True,
         type='SwinTransformer',
-        embed_dims=96,
+        embed_dims=192,
         depths=[2, 2, 18, 2],
-        num_heads=[3, 6, 12, 24],
-        window_size=7,
+        num_heads=[6, 12, 24, 48],
+        window_size=12,
         mlp_ratio=4,
         qkv_bias=True,
         qk_scale=None,
@@ -26,7 +26,7 @@ model = dict(
         with_cp=False,
         convert_weights=True,
         init_cfg=dict(type='Pretrained', checkpoint=pretrained)),
-    neck=dict(in_channels=[96, 192, 384, 768]))
+    neck=dict(in_channels=[192, 384, 768, 1536]))
 
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
